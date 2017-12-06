@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TransformTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-10-25T01:53:19" hostname="JoshLaptop" time="0.029">
+  <properties/>
+  <testcase name="testColorShift" classname="TransformTest" time="0.013"/>
+  <testcase name="testGreenScreen" classname="TransformTest" time="0.003"/>
+  <testcase name="testMystery" classname="TransformTest" time="0.001"/>
+  <testcase name="testPositionShifts" classname="TransformTest" time="0.003"/>
+  <testcase name="testRotateAndFlip" classname="TransformTest" time="0.003"/>
+  <testcase name="testShrinkOrExpand" classname="TransformTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
