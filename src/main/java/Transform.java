@@ -1,3 +1,4 @@
+import java.util.Arrays;
 /**
 
 * A class that runs implements several simple transformations on 2D image arrays.
@@ -30,7 +31,7 @@
 
 public class Transform {
 
- 
+
 
     /**
 
@@ -148,13 +149,13 @@ public class Transform {
 
     public static final int TFOUR = 24;
 
- 
+
 
     /**
 
      * Shift the image up by the specified amount.
 
- 
+
 
      * @param originalImage the image to shift up
 
@@ -190,9 +191,9 @@ public class Transform {
 
      }
 
- 
 
- 
+
+
 
     /**
 
@@ -234,7 +235,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -276,7 +277,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -318,7 +319,7 @@ public class Transform {
 
      }
 
- 
+
 
     /**
 
@@ -398,7 +399,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -472,7 +473,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -504,7 +505,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -536,7 +537,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -548,7 +549,7 @@ public class Transform {
 
     public static final int DEFAULT_COLOR_SHIFT = 32;
 
- 
+
 
     /**
 
@@ -650,7 +651,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -698,7 +699,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -746,7 +747,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -794,7 +795,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -842,9 +843,9 @@ public class Transform {
 
     }
 
- 
 
- 
+
+
 
     /**
 
@@ -892,9 +893,9 @@ public class Transform {
 
     }
 
- 
 
- 
+
+
 
     /**
 
@@ -942,7 +943,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -952,7 +953,7 @@ public class Transform {
 
     public static final int DEFAULT_RESIZE_AMOUNT = 2;
 
- 
+
 
     /**
 
@@ -1026,7 +1027,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -1194,7 +1195,7 @@ public class Transform {
 
     }
 
- 
+
 
     /**
 
@@ -1310,13 +1311,13 @@ public class Transform {
 
     }
 
- 
+
   //Conver color image to grey image
   public static int[][] mystery1(final int[][] originalImage) {
 
         int[][] outputImage = new int[originalImage.length][originalImage[0].length];
 
- 
+
 
         for (int row = 0; row < originalImage.length; row++) {
 
@@ -1349,7 +1350,7 @@ public class Transform {
   }
 
 
- 
+
   //swap color with more ways
 static int mysteryType = 0;
 
@@ -1357,7 +1358,7 @@ static int mysteryType = 0;
 
         int[][] outputImage = new int[originalImage.length][originalImage[0].length];
 
- 
+
 
         for (int row = 0; row < originalImage.length; row++) {
 
@@ -1403,19 +1404,19 @@ static int mysteryType = 0;
 
         }
 
-                mysteryType = (mysteryType+1)%3;  //Make loop of 3 types of mystery 
+                mysteryType = (mysteryType+1)%3;  //Make loop of 3 types of mystery
 
         return outputImage;
 
     }
 
- 
+
   //Convert image to edge based scratch
   public static int[][] mystery3(final int[][] originalImage) {
 
         int[][] outputImage = new int[originalImage.length][originalImage[0].length];
 
- 
+
 
         for (int row = 0; row < originalImage.length-1; row++) {
 
@@ -1429,7 +1430,7 @@ static int mysteryType = 0;
 
                 int blueComponent = (finalPixel & C5_VALUE) >> SIXTEEN;
 
- 
+
 
                 int nextRowPixel = originalImage[row+1][col];
 
@@ -1439,7 +1440,7 @@ static int mysteryType = 0;
 
                 int blueComponent1 = (nextRowPixel & C5_VALUE) >> SIXTEEN;
 
- 
+
 
                 int nextColPixel = originalImage[row][col+1];
 
@@ -1448,7 +1449,7 @@ static int mysteryType = 0;
                 int greenComponent2 = (nextColPixel & C3_VALUE) >> EIGHT;
 
                 int blueComponent2 = (nextColPixel & C5_VALUE) >> SIXTEEN;
-                        
+
                 int redEdge1 = redComponent-redComponent1;
                 if (redEdge1 < 0) redEdge1 = redEdge1 * -1;
 
@@ -1466,9 +1467,9 @@ static int mysteryType = 0;
 
                 int blueEdge2 = blueComponent-blueComponent2;
                 if (blueEdge2 < 0) blueEdge2 = blueEdge2 * -1;
-                
+
                 int edgeComponent = (redEdge1 + redEdge2 + greenEdge1 + greenEdge2 + blueEdge1 + blueEdge2)/6;
-                
+
                 //Convert color image to edge based scratch
 
                 outputImage[row][col] =
@@ -1481,7 +1482,7 @@ static int mysteryType = 0;
 
                     //Copy the last col
 
-                    outputImage[row][originalImage[0].length-1] = originalImage[row][originalImage[0].length-1];   
+                    outputImage[row][originalImage[0].length-1] = originalImage[row][originalImage[0].length-1];
 
         }
 
@@ -1493,19 +1494,19 @@ static int mysteryType = 0;
 
                 }
 
- 
+
 
                 return outputImage;
 
   }
 
- 
+
   //flip bits of grey image
   public static int[][] mystery4(final int[][] originalImage) {
 
         int[][] outputImage = new int[originalImage.length][originalImage[0].length];
 
- 
+
 
         for (int row = 0; row < originalImage.length; row++) {
 
@@ -1540,14 +1541,14 @@ static int mysteryType = 0;
                 return outputImage;
 
   }
-  
+
 
   //Conver color image to 2 bits color image
   public static int[][] mystery5(final int[][] originalImage) {
 
         int[][] outputImage = new int[originalImage.length][originalImage[0].length];
 
- 
+
 
         for (int row = 0; row < originalImage.length; row++) {
 
@@ -1561,7 +1562,7 @@ static int mysteryType = 0;
 
                 int blueComponent = (finalPixel & C5_VALUE) >> SIXTEEN;
 
-                //Eacu color uses only 2 effective bits 
+                //Eacu color uses only 2 effective bits
                 redComponent = (redComponent>>6) << 6;
                 greenComponent = (greenComponent>>6) << 6;
                 blueComponent = (blueComponent>>6) << 6;
@@ -1577,8 +1578,8 @@ static int mysteryType = 0;
 
         return outputImage;
 
-  } 
-  
+  }
+
   //Convert image to edge based black scratch with color
   public static int[][] mystery6(final int[][] originalImage) {
 
@@ -1596,7 +1597,7 @@ static int mysteryType = 0;
 
                 int blueComponent = (finalPixel & C5_VALUE) >> SIXTEEN;
 
- 
+
 
                 int nextRowPixel = originalImage[row+1][col];
 
@@ -1606,7 +1607,7 @@ static int mysteryType = 0;
 
                 int blueComponent1 = (nextRowPixel & C5_VALUE) >> SIXTEEN;
 
- 
+
 
                 int nextColPixel = originalImage[row][col+1];
 
@@ -1615,7 +1616,7 @@ static int mysteryType = 0;
                 int greenComponent2 = (nextColPixel & C3_VALUE) >> EIGHT;
 
                 int blueComponent2 = (nextColPixel & C5_VALUE) >> SIXTEEN;
-                        
+
                 int redEdge1 = redComponent-redComponent1;
                 if (redEdge1 < 0) redEdge1 = redEdge1 * -1;
 
@@ -1633,22 +1634,22 @@ static int mysteryType = 0;
 
                 int blueEdge2 = blueComponent-blueComponent2;
                 if (blueEdge2 < 0) blueEdge2 = blueEdge2 * -1;
-                
+
                 blueComponent = (blueEdge1 + blueEdge2)/2;
                 greenComponent = (greenEdge1 + greenEdge2)/2;
                 redComponent = (redEdge1 + redEdge2)/2;
-                
+
                 //Convert color image to edge based scratch
-                
+
                 if((blueComponent + greenComponent + redComponent) > 100)
-                	outputImage[row][col] = (finalPixel & ALPHA_SHIFT);  //make all color 0 to show black edge 
+                    outputImage[row][col] = (finalPixel & ALPHA_SHIFT);  //make all color 0 to show black edge
                 else
-                	outputImage[row][col] = finalPixel;  //otherwise to show original color
+                    outputImage[row][col] = finalPixel;  //otherwise to show original color
             }
 
                     //Copy the last col
 
-                    outputImage[row][originalImage[0].length-1] = originalImage[row][originalImage[0].length-1];   
+                    outputImage[row][originalImage[0].length-1] = originalImage[row][originalImage[0].length-1];
 
         }
 
@@ -1660,12 +1661,65 @@ static int mysteryType = 0;
 
                 }
 
- 
+
 
                 return outputImage;
 
-  } 
-  
+  }
+  /**
+   * 1/9, the square blur coefficient that makes each pixel the average of surrounding pixs.
+   */
+  /**
+   * 1/9, the square blur coefficient that makes each pixel the average of surrounding pixs.
+   */
+  static final int BLUR = 9;
+  /**
+   *  Adds a simple square blur to an image.
+   * @param originalImage to be blurred
+   * @return blurred image.
+   */
+  public static int[][] blur(final int[][] originalImage) {
+      int[][] output = new int[originalImage.length][originalImage[0].length];
+      for (int row = 1; row < originalImage.length - 1; row++) {
+          for (int col = 1; col < originalImage[0].length - 1; col++) {
+              long pix = (originalImage[row][col])
+                        + (originalImage[row - 1][col - 1])
+                        + (originalImage[row - 1][col])
+                        + (originalImage[row - 1][col + 1])
+                        + (originalImage[row][col - 1])
+                        + (originalImage[row][col + 1])
+                        + (originalImage[row + 1][col - 1])
+                        + (originalImage[row + 1][col])
+                        + (originalImage[row + 1][col + 1]);
+              pix = pix / BLUR;
+              output[row][col] = (int) pix;
+          }
+      }
+      return output;
+  }
+  /**
+   * Sorts all of the pixels in the original image from lowest to highest numerical value.
+   * @param originalImage to be modified.
+   * @return modified, sorted image.
+   */
+  public static int[][] sortedPixels(final int[][] originalImage) {
+      int[][] output = new int[originalImage.length][originalImage[0].length];
+      int[] pixelArray = new int[originalImage.length * originalImage[0].length];
+      for (int row = 0; row < output.length; row++) {
+          for (int col = 0; col < output[0].length; col++) {
+              int pos = (row * output[0].length) + col;
+              pixelArray[pos] = originalImage[row][col];
+          }
+      }
+      Arrays.sort(pixelArray);
+      for (int i = 0; i < pixelArray.length; i++) {
+          int row = i / output[0].length;
+          int col = i % output[0].length;
+          output[row][col] = pixelArray[i];
+      }
+      return output;
+  }
+
   //Convert image to colored edge based scratch
   public static int[][] mystery7(final int[][] originalImage) {
 
@@ -1683,7 +1737,7 @@ static int mysteryType = 0;
 
                 int blueComponent = (finalPixel & C5_VALUE) >> SIXTEEN;
 
- 
+
 
                 int nextRowPixel = originalImage[row+1][col];
 
@@ -1693,7 +1747,7 @@ static int mysteryType = 0;
 
                 int blueComponent1 = (nextRowPixel & C5_VALUE) >> SIXTEEN;
 
- 
+
 
                 int nextColPixel = originalImage[row][col+1];
 
@@ -1702,7 +1756,7 @@ static int mysteryType = 0;
                 int greenComponent2 = (nextColPixel & C3_VALUE) >> EIGHT;
 
                 int blueComponent2 = (nextColPixel & C5_VALUE) >> SIXTEEN;
-                        
+
                 int redEdge1 = redComponent-redComponent1;
                 if (redEdge1 < 0) redEdge1 = redEdge1 * -1;
 
@@ -1720,11 +1774,11 @@ static int mysteryType = 0;
 
                 int blueEdge2 = blueComponent-blueComponent2;
                 if (blueEdge2 < 0) blueEdge2 = blueEdge2 * -1;
-                
+
                 blueComponent = (blueEdge1 + blueEdge2)/2;
                 greenComponent = (greenEdge1 + greenEdge2)/2;
                 redComponent = (redEdge1 + redEdge2)/2;
-                
+
                 //Convert color image to edge based scratch
 
                 outputImage[row][col] =
@@ -1737,7 +1791,7 @@ static int mysteryType = 0;
 
                     //Copy the last col
 
-                    outputImage[row][originalImage[0].length-1] = originalImage[row][originalImage[0].length-1];   
+                    outputImage[row][originalImage[0].length-1] = originalImage[row][originalImage[0].length-1];
 
         }
 
@@ -1749,12 +1803,12 @@ static int mysteryType = 0;
 
                 }
 
- 
+
 
                 return outputImage;
 
   }
-  
+
   //Convert image to edge based white scratch with color
   public static int[][] mystery8(final int[][] originalImage) {
 
@@ -1772,7 +1826,7 @@ static int mysteryType = 0;
 
                 int blueComponent = (finalPixel & C5_VALUE) >> SIXTEEN;
 
- 
+
 
                 int nextRowPixel = originalImage[row+1][col];
 
@@ -1782,7 +1836,7 @@ static int mysteryType = 0;
 
                 int blueComponent1 = (nextRowPixel & C5_VALUE) >> SIXTEEN;
 
- 
+
 
                 int nextColPixel = originalImage[row][col+1];
 
@@ -1791,7 +1845,7 @@ static int mysteryType = 0;
                 int greenComponent2 = (nextColPixel & C3_VALUE) >> EIGHT;
 
                 int blueComponent2 = (nextColPixel & C5_VALUE) >> SIXTEEN;
-                        
+
                 int redEdge1 = redComponent-redComponent1;
                 if (redEdge1 < 0) redEdge1 = redEdge1 * -1;
 
@@ -1809,21 +1863,21 @@ static int mysteryType = 0;
 
                 int blueEdge2 = blueComponent-blueComponent2;
                 if (blueEdge2 < 0) blueEdge2 = blueEdge2 * -1;
-                
+
                 blueComponent = (blueEdge1 + blueEdge2)/2;
                 greenComponent = (greenEdge1 + greenEdge2)/2;
                 redComponent = (redEdge1 + redEdge2)/2;
-                
+
                 //Convert color image to edge based scratch
-                
+
                 if((blueComponent + greenComponent + redComponent) > 100)
-                	outputImage[row][col] = (finalPixel & ALPHA_SHIFT) | 0x00FFFFFF; //make all color FF to show white edge 
+                    outputImage[row][col] = (finalPixel & ALPHA_SHIFT) | 0x00FFFFFF; //make all color FF to show white edge
                 else
                     outputImage[row][col] = finalPixel; //otherwise, keep the original color
             }
 
             //Copy the last col
-            outputImage[row][originalImage[0].length-1] = originalImage[row][originalImage[0].length-1];   
+            outputImage[row][originalImage[0].length-1] = originalImage[row][originalImage[0].length-1];
 
         }
 
@@ -1837,6 +1891,6 @@ static int mysteryType = 0;
 
                 return outputImage;
 
-  } 
-  
+  }
+
 }
